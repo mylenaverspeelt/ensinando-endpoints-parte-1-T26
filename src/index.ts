@@ -1,5 +1,6 @@
 import express from "express";
-// import db from "./client/db";
+import db from "./client/db";
+import { User } from "./client/db";
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -19,9 +20,15 @@ app.use(express.urlencoded({ extended: true }));
     }
 */
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World");
-// });
+// FINDBYID / FINDALL / CREATE / UPDATEBYID/ REMOVE
+
+app.post("/create", (req, res) => {
+
+  db.create(req.body)
+
+  res.status(200).send("Usuário salvo com sucesso")
+
+})
 
 app.listen(port, () => {
   console.log(`Esse servidor está rodando em ${port}`);
