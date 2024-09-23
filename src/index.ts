@@ -30,6 +30,11 @@ app.post("/create", (req, res) => {
 
 })
 
+app.get("/findAll", (req, res) => {
+  const busca = db.findAll()
+  res.status(200).send("Usuários encontrados: " + busca.map((item) => item.name ))
+})
+
 app.listen(port, () => {
   console.log(`Esse servidor está rodando em ${port}`);
 });

@@ -5,8 +5,10 @@ export type User = {
   password: string;
 };
 
+const database: User[] = [];
+
 const db = () => {
-  const database: User[] = [];
+  
   const message = "nao foi possivel encontrar, informacao invalida!";
 
   const getIndice = (id: number) =>
