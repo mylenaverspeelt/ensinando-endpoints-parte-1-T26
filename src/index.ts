@@ -35,6 +35,15 @@ app.get("/findAll", (req, res) => {
   res.status(200).send("Usuários encontrados: " + busca.map((item) => item.name ))
 })
 
+
+app.put("/update/:id", (req,res) => {
+  const id = parseInt(req.params.id)
+  const user = req.body
+  db.updateById(id,user)
+
+  res.status(200).send("Atualização do id " + id + " realizada com sucesso.")
+})
+
 app.listen(port, () => {
   console.log(`Esse servidor está rodando em ${port}`);
 });
