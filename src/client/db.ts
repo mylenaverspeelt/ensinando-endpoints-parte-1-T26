@@ -5,10 +5,17 @@ export type User = {
   password: string;
 };
 
+export type UsuarioModificado =
+  | { user: User; message?: undefined }
+  | { message: string; user?: undefined };
+
+export type UsuarioRemovido = {
+  message: string;
+};
+
 const database: User[] = [];
 
 const db = () => {
-  
   const message = "nao foi possivel encontrar, informacao invalida!";
 
   const getIndice = (id: number) =>
@@ -62,4 +69,4 @@ const db = () => {
   };
 };
 
-export default db() ;
+export default db();
