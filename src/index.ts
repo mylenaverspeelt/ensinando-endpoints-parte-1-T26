@@ -35,6 +35,11 @@ app.get("/findAll", (req, res) => {
   res.status(200).send("Usuários encontrados: " + busca.map((item) => item.name ))
 })
 
+app.get("/findById/:id", (req, res) => {
+  const buscaPorId = db.findById(parseInt(req.params.id))
+  
+  res.status(200).send(buscaPorId)
+})
 
 app.put("/update/:id", (req,res) => {
   const id = parseInt(req.params.id)
