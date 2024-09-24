@@ -44,6 +44,13 @@ app.put("/update/:id", (req,res) => {
   res.status(200).send("Atualização do id " + id + " realizada com sucesso.")
 })
 
+app.delete("/delete/:id",(req,res) =>{
+  const id = parseInt(req.params.id)
+  const usuarioRemovido = db.remove(id)
+
+  res.status(200).send(usuarioRemovido.message)
+})
+
 app.listen(port, () => {
   console.log(`Esse servidor está rodando em ${port}`);
 });
