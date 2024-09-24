@@ -34,14 +34,14 @@ app.get("/findAll", (req, res) => {
 
 app.get("/findById/:id", (req, res) => {
   const buscaPorId: User = db.findById(parseInt(req.params.id))
-  res.status(200).send("Usuário encontrado: " + buscaPorId)
+  res.status(200).send("Usuário encontrado: " + buscaPorId.name)
 })
 
 app.put("/update/:id", (req,res) => {
   const id: number = parseInt(req.params.id)
   const user = req.body
   const usuarioModificado: UsuarioModificado = db.updateById(id,user)
-  res.status(200).send("Atualização do id " + usuarioModificado.user.name + " realizada com sucesso.")
+  res.status(200).send("Atualização do usuário " + usuarioModificado.user.name + " realizada com sucesso.")
 })
 
 app.delete("/delete/:id",(req,res) =>{
