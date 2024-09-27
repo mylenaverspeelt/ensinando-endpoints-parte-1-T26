@@ -20,8 +20,6 @@ app.use(express.urlencoded({ extended: true }));
     }
 */
 
-// FINDBYID / FINDALL / CREATE / UPDATEBYID/ REMOVE
-
 app.post("/create", (req, res) => {
   const  criandoUsuario: User = db.create(req.body)
   res.status(200).send("Usuário " + criandoUsuario.name + " salvo com sucesso")
@@ -37,10 +35,10 @@ app.get("/findById/:id", (req, res) => {
   res.status(200).send("Usuário encontrado: " + buscaPorId.name)
 })
 
-app.put("/update/:id", (req,res) => {
+app.patch("/update/:id", (req,res) => {
   const id: number = parseInt(req.params.id)
-  const user = req.body
-  const usuarioModificado: UsuarioModificado = db.updateById(id,user)
+  const data = req.body
+  const usuarioModificado: UsuarioModificado = db.updateById(id,data)
   res.status(200).send("Atualização do usuário " + usuarioModificado.user.name + " realizada com sucesso.")
 })
 
